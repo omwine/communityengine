@@ -122,6 +122,7 @@ class PostsController < BaseController
         }
         format.js
       else
+        @categories = Category.find(:all)
         format.html { render :action => "new" }
         format.js        
       end
