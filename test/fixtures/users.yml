@@ -15,6 +15,7 @@ quentin:
   birthday: <%= 15.years.ago.to_s :db %>
   activities_count: 0
   role_id: 3
+  last_login_at: <%= 10.minutes.ago.to_s :db %>
 aaron:
   id: 2
   login: aaron
@@ -30,6 +31,7 @@ aaron:
   login_slug: aaron
   birthday: <%= 15.years.ago.to_s :db %>  
   role_id: 3
+  last_login_at: <%= 10.minutes.ago.to_s :db %>
 kevin:
   id: 3
   login: kevin
