@@ -58,7 +58,7 @@ class Post < ActiveRecord::Base
   end
   
   def self.find_popular(options = {} )
-    options.reverse_merge! :limit => 5, :since => 7.days
+    options.reverse_merge! :limit => 5, :since => 3.years
     
     self.popular.since(options[:since]).find :all, :limit => options[:limit]
   end
