@@ -1,6 +1,8 @@
 class Country < ActiveRecord::Base
   has_many :metro_areas
   has_many :states
+
+  named_scope :released, { :conditions => { :released => true }, :order => 'countries.name ASC' }
   
   def self.get(name)
     case name

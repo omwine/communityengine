@@ -12,4 +12,8 @@ class CountryTest < ActiveSupport::TestCase
     c = Country.find_countries_with_metros
     assert_equal c.size, 3
   end
+  
+  def test_should_use_named_scope
+    assert_equal Country.released.count, 2
+  end
 end

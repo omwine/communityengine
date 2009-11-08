@@ -2,12 +2,16 @@
 us:
   id: 1
   name: United States
+  released: true
 argentina:
   id: 2
   name: Argentina
+  released: true
 germany:
   id: 3
   name: Germany
+  released: false
 mongolia:
   id: 4
   name: Mongolia
+  released: false
