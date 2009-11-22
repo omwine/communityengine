@@ -7,7 +7,7 @@ class PhotoManagerController < BaseController
   def index
     @albums = Album.find(:all, :conditions => ['user_id = ?', current_user], :order => 'id DESC',
       :page => { :start => 1, :current => params[:page_albums], :size => 10 })
-    @photos_no_albums = Photo.find(:all, :page => { :start => 1, :current => params[:page], :size => 10 },
+    @photos_no_albums = Photo.find(:all, :page => { :start => 1, :current => params[:page], :size => 12 },
      :conditions => ['album_id IS NULL AND parent_id IS NULL AND user_id = ?', current_user],
      :order => 'id DESC')
   end
