@@ -15,17 +15,21 @@ module LocalizedApplication
         logger.debug "[I18n] loading locale: #{params[:user_locale][:code]} from params"
         I18n.locale = params[:user_locale][:code]
         session[:locale] = I18n.locale
+        expire_action :action => :site_index
     elsif session[:locale]
         logger.debug "[I18n] loading locale: #{session[:locale]} from session"
         I18n.locale = session[:locale]
+        expire_action :action => :site_index
     elsif AppConfig.community_locale
         logger.debug "[I18n] loading locale: #{AppConfig.community_locale} from config"
         I18n.locale = AppConfig.community_locale
+        expire_action :action => :site_index
     else
+      logger.debug "[I18n] found a valid http header locale: #{I18n.locale}"
         I18n.locale = get_valid_lang_from_accept_header
-        logger.debug "[I18n] found a valid http header locale: #{I18n.locale}"
+        expire_action :action => :site_index
     end
-    
+
     logger.debug "[I18n] Locale set to #{I18n.locale}"
     # render the page
 
