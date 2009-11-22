@@ -11,7 +11,14 @@ module LocalizedApplication
     @current_path = request.env['PATH_INFO']
     @request_method = request.env['REQUEST_METHOD']
 
-    if AppConfig.community_locale
+    if params[:user_locale]
+        logger.debug "[I18n] loading locale: #{params[:user_locale][:code]} from params"
+        I18n.locale = params[:user_locale][:code]
+        session[:locale] = I18n.locale
+    elsif session[:locale]
+        logger.debug "[I18n] loading locale: #{session[:locale]} from session"
+        I18n.locale = session[:locale]
+    elsif AppConfig.community_locale
         logger.debug "[I18n] loading locale: #{AppConfig.community_locale} from config"
         I18n.locale = AppConfig.community_locale
     else
