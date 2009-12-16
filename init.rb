@@ -5,8 +5,6 @@ config.after_initialize do
   end
 end 
 
-
-
 #Alias Desert's routing method to preserve compatibility with Engine's
 Desert::Rails::RouteSet.module_eval do
   alias_method :from_plugin, :routes_from_plugin  
