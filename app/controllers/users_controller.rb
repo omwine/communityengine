@@ -39,7 +39,8 @@ class UsersController < BaseController
       self.current_user = @user
       current_user.track_activity(:joined_the_site)      
       redirect_to welcome_photo_user_path(@user)
-      flash[:notice] = :thanks_for_activating_your_account.l 
+      flash[:notice] = :thanks_for_activating_your_account.l
+      flash[:analytics] = "goal/signup" 
       return
     end
     flash[:error] = :account_activation_error.l_with_args(:email => AppConfig.support_email) 
