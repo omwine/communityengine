@@ -92,6 +92,8 @@ class UsersController < BaseController
     
     @my_activity = Activity.recent.by_users([@user.id]).find(:all, :limit => 10) 
 
+    @reviews = Review.find(:all, :conditions => [":user_id = ?", @user], :limit => 2, :order => "created_at desc")
+
     update_view_count(@user) unless current_user && current_user.eql?(@user)
   end
   
