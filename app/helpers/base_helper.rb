@@ -334,7 +334,7 @@ module BaseHelper
       when 90..1440       then "#{(distance_in_minutes.to_f / 60.0).round} "+:hours_ago.l
       when 1440..2160     then :one_day_ago.l # 1 day to 1.5 days
       when 2160..2880     then "#{(distance_in_minutes.to_f / 1440.0).round} "+:days_ago.l # 1.5 days to 2 days
-      else from_time.strftime("%b %e, %Y  %l:%M%p").gsub(/([AP]M)/) { |x| x.downcase }
+      else I18n.l(from_time.to_date, :format => :published_date)
     end
   end
 
