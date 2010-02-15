@@ -19,8 +19,8 @@ module Acts
           self.publish_states = args.collect{|state| state.to_s.downcase.to_sym }
           include InstanceMethods
           
-          named_scope :live, :conditions => "published_as = 'live'"
-          named_scope :draft, :conditions => "published_as = 'draft'"
+          named_scope :live, :conditions => "#{table_name}.published_as = 'live'"
+          named_scope :draft, :conditions => "#{table_name}.published_as = 'draft'"
 
 
           class << self
@@ -52,7 +52,7 @@ module Acts
             args.shift
             # find_all_by_published_as(state.to_s.downcase, *args)
             # again, hacked
-            with_scope(:find => {:conditions => ["published_as = ?", state.to_s.downcase] }) do
+            with_scope(:find => {:conditions => ["#{table_name}.published_as = ?", state.to_s.downcase] }) do
               find_without_published_as(:all, *args)
             end            
           else
