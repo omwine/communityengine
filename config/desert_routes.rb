@@ -40,6 +40,7 @@ admin_messages    '/admin/messages', :controller => 'admin', :action => 'message
 admin_comments    '/admin/comments', :controller => 'admin', :action => 'comments'
 admin_tags        'admin/tags/:action', :controller => 'tags', :defaults => {:action=>:manage}
 admin_events      'admin/events', :controller => 'admin', :action=>'events'
+admin_producers      'admin/producers', :controller => 'admin', :action=>'producers'
 
 # sessions routes
 teaser '', :controller=>'base', :action=>'teaser'
@@ -134,6 +135,7 @@ resources :users, :member_path => '/:id', :nested_member_path => '/:user_id', :m
   user.resources :invitations
   user.resources :reviews
   user.resources :wishes
+  user.resources :cellarpositions  
   user.resources :offerings, :collection => {:replace => :put}
   user.resources :favorites, :name_prefix => 'user_'
   user.resources :messages, :collection => { :delete_selected => :post, :auto_complete_for_username => :any }  
