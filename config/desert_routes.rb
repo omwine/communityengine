@@ -135,7 +135,7 @@ resources :users, :member_path => '/:id', :nested_member_path => '/:user_id', :m
   user.resources :invitations
   user.resources :reviews
   user.resources :wishes
-
+  user.resources :cellarpositions  
   user.resources :offerings, :collection => {:replace => :put}
   user.resources :favorites, :name_prefix => 'user_'
   user.resources :messages, :collection => { :delete_selected => :post, :auto_complete_for_username => :any }  
